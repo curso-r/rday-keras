@@ -117,7 +117,7 @@ class: inverse, middle, center
 
 ---
 
-#### Duplicadas
+### Duplicadas
 
 <div>
 .pull-left[
@@ -140,7 +140,7 @@ class: inverse, middle, center
 </div>
 
 
-#### Não-Duplicadas
+### Não-Duplicadas
 
 <div>
 .pull-left[
@@ -163,7 +163,16 @@ class: inverse, middle, center
 ]
 </div>
 
+---
 
+# Modelo
+
+<br>
+<br>
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+knitr::include_graphics("modelo-esquema.svg")
+```
 
 
 
