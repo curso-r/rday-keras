@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Keras: Deep Learning com R</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Daniel Falbel (@Curso-R e @R6)" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Keras: Deep Learning com R
+## R-Day
+### Daniel Falbel (<span class="citation">@Curso-R</span> e <span class="citation">@R6</span>)
+### 22/05/2018
+
+---
+
+
+
+
+## Oi!
+
+- Bacharel em Estatística (2015)
+
+- Sócio da [Curso-R](http://curso-r.com)
+
+- Sócio da [R6](http://rseis.com.br)
+
+---
+
+## Deep Learning
+
+* Redes neurais com muitas camadas.
+
+* Recentemente alcançou bastante sucesso em problemas de classificação de imagens, audio e texto.
+
+![](https://cdn-images-1.medium.com/max/1600/1*oB3S5yHHhvougJkPXuc8og.gif)
+
+---
+
+## Keras
+
+* Uma API que permite especificar modelos de *Deep Learning* de forma intuitiva e rápida.
+
+* Criada por François Chollet (@fchollet).
+
+![:scale 40%](https://pbs.twimg.com/profile_images/831025272589676544/3g6BrXCE_400x400.jpg)
+
+* Originalmente implementada em `python`.
+
+---
+
+## Keras
+
+* Uma API com múltiplas implementações.
+
+![](keras.svg)&lt;!-- --&gt;
+
+---
+
+## Tensorflow
+
+.pull-left[
+
+* Desenvolvida por pesquisadores no Google para fazer pesquisas em Deep Learning. O nome original era *DistBelief*.
+
+* Uma biblioteca de computação numérica de propósito geral.
+  
+* Com a mesma sintaxe funciona em diversos hardwares:
+  - CPU (com Eigen)
+  - GPU (cum CUDA)
+  - TPU (Tensor Processing Unit)
+  
+]
+
+.pull-right[
+  ![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/TensorFlowLogo.svg/2000px-TensorFlowLogo.svg.png)
+]
+
+---
+
+## Keras + R
+
+* Pacote do R: [`keras`](https://github.com/rstudio/keras).
+
+* Baseado em [reticulate](https://github.com/rstudio/reticulate).
+
+* Desenvolvido pelo JJ Allaire (CEO do RStudio).
+
+* Tem uma sintaxe R-like com uso de `%&gt;%`.
+
+![:scale 70%](https://i.ytimg.com/vi/D8yF9AtTTuQ/maxresdefault.jpg)
+
+---
+class: inverse, middle, center
+
+## Exemplo
+
+### [Classifying duplicate questions from Quora with Keras](https://tensorflow.rstudio.com/blog/keras-duplicate-questions-quora.html)
+
+---
+
+![:scale 50%](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/2000px-Quora_logo_2015.svg.png)
+
+* [Quora](https://www.quora.com): site de perguntas e respostas de âmbito geral.
+
+* Para quem usa o Quora, é melhor ter apenas uma versão de uma pergunta.
+
+* Banco de dados de uma [competição do Kaggle](https://www.kaggle.com/c/quora-question-pairs).
+
+* ~400k pares de perguntas duplicadas ou não marcadas pelos moderadores do site.
+
+* **Objetivo:** Identificar os pares de perguntas que possuem o mesmo _significado_.
+
+* Antes da competição o problea era resolvido com Random Forests, depois passaram a usar [Deep Learning](https://engineering.quora.com/Semantic-Question-Matching-with-Deep-Learning).
+
+---
+
+#### Duplicadas
+
+&lt;div&gt;
+.pull-left[
+  * How can I be a good geologist?
+  
+  
+  * How do I read and find my YouTube comments? 
+  
+  * What can make Physics easy to learn?  
+]
+
+.pull-right[
+  - What should I do to be a great geologist? 
+  
+  
+  - How can I see all my Youtube comments?
+  
+  - How can you make physics easy to learn? 
+]
+&lt;/div&gt;
+
+
+#### Não-Duplicadas
+
+&lt;div&gt;
+.pull-left[
+  * How can I increase the speed of my internet connection while using a VPN?	
+  
+  
+  * What is the step by step guide to invest in share market in india?
+  
+  * How do I get over my ex's past?	
+
+]
+
+.pull-right[
+  * How can Internet speed be increased by hacking through DNS?
+  
+  
+  * What is the step by step guide to invest in share market?
+  
+  * What is the best way to get over your ex?	
+]
+&lt;/div&gt;
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
