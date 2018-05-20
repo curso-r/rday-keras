@@ -1,6 +1,6 @@
 ---
 title: "Keras: Deep Learning com R"
-subtitle: "R-Day"
+subtitle: "rday-keras.curso-r.com"
 author: "Daniel Falbel (@Curso-R e @R6)"
 date: "22/05/2018"
 output:
@@ -341,7 +341,7 @@ dfalbel@curso-r.com
 
 github.com/dfalbel
 
-curso-r.com/rday-keras
+rday-keras.curso-r.com
 
 
 
