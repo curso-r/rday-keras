@@ -165,7 +165,7 @@ class: inverse, middle, center
 
 ---
 
-# Modelo
+## Arquitetura do modelo
 
 <br>
 <br>
@@ -173,6 +173,175 @@ class: inverse, middle, center
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("modelo-esquema.svg")
 ```
+
+* Siamese LSTM
+
+---
+
+## Arquitetura no Keras
+
+<br>
+<br>
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+knitr::include_graphics("modelo-keras.svg")
+```
+
+---
+
+## Código
+
+```{r, eval = FALSE}
+library(keras)
+```
+
+--
+
+```{r, eval = FALSE}
+input1 <- layer_input(shape = c(20), name = "input_question1")
+input2 <- layer_input(shape = c(20), name = "input_question2")
+```
+
+--
+
+```{r, eval = FALSE}
+word_embedder <- layer_embedding( 
+  input_dim = 50000,     # vocab size 
+  output_dim = 128,      # hyperparameter - embedding size
+  input_length = 20     # padding size
+)
+```
+
+--
+
+```{r, eval = FALSE}
+seq_embedder <- layer_lstm(units = 128)
+```
+
+--
+
+```{r, eval = FALSE}
+vector1 <- input1 %>% word_embedder() %>% seq_embedder()
+vector2 <- input2 %>% word_embedder() %>% seq_embedder()
+```
+
+--
+
+```{r}
+#> Tensor("lstm_1/TensorArrayReadV3:0", shape=(?, 128), dtype=float32)
+#> Tensor("lstm_1_1/TensorArrayReadV3:0", shape=(?, 128), dtype=float32)
+```
+
+---
+
+## Arquitetura do Modelo
+
+<br>
+<br>
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+knitr::include_graphics("modelo-keras.svg")
+```
+
+---
+
+## Código
+
+```{r, eval = FALSE}
+cosine_similarity <- layer_dot(list(vector1, vector2), axes = 1)
+```
+
+--
+
+```{r, eval = FALSE}
+output <- cosine_similarity %>% 
+  layer_dense(units = 1, activation = "sigmoid")
+```
+
+--
+
+```{r, eval = FALSE}
+model <- keras_model(list(input1, input2), output)
+model %>% compile(
+  optimizer = "adam", 
+  metrics = list(acc = metric_binary_accuracy), 
+  loss = "binary_crossentropy"
+)
+```
+
+---
+
+```{r, eval = FALSE}
+summary(model)
+```
+
+```{r, eval = FALSE}
+# _______________________________________________________________________________________
+# Layer (type)                Output Shape       Param #    Connected to                 
+# =======================================================================================
+# input_question1 (InputLayer (None, 20)         0                                       
+# _______________________________________________________________________________________
+# input_question2 (InputLayer (None, 20)         0                                       
+# _______________________________________________________________________________________
+# embedding_1 (Embedding)     (None, 20, 128)    6400256    input_question1[0][0]        
+#                                                           input_question2[0][0]        
+# _______________________________________________________________________________________
+# lstm_1 (LSTM)               (None, 128)        131584     embedding_1[0][0]            
+#                                                           embedding_1[1][0]            
+# _______________________________________________________________________________________
+# dot_1 (Dot)                 (None, 1)          0          lstm_1[0][0]                 
+#                                                           lstm_1[1][0]                 
+# _______________________________________________________________________________________
+# dense_1 (Dense)             (None, 1)          2          dot_1[0][0]                  
+# =======================================================================================
+# Total params: 6,531,842
+# Trainable params: 6,531,842
+# Non-trainable params: 0
+# _______________________________________________________________________________________
+```
+
+---
+
+## Treinando
+
+```{r, eval = FALSE}
+model %>% fit(
+  list(train_question1_padded, train_question2_padded),
+  train_is_duplicate, 
+  batch_size = 64, 
+  epochs = 10, 
+  validation_data = list(
+    list(val_question1_padded, val_question2_padded), 
+    val_is_duplicate
+  )
+)
+```
+
+---
+class: inverse, middle, center
+
+## Predições com Shiny
+
+[Shiny](https://jjallaire.shinyapps.io/shiny-quora/)
+
+---
+
+## Mais
+
+* [Galeria de exemplos do Keras](https://keras.rstudio.com/articles/examples/index.html).
+* [Livro: Deep Learning com R](https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X)
+* [Blog: Tensorflow for R](https://tensorflow.rstudio.com/blog.html)
+
+---
+class: inverse, middle, center
+
+## Obrigado
+
+dfalbel@curso-r.com
+
+github.com/dfalbel
+
+curso-r.com/rday-keras
 
 
 
