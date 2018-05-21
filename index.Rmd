@@ -59,27 +59,6 @@ knitr::include_graphics("keras.svg")
 
 ---
 
-## Tensorflow
-
-.pull-left[
-
-* Desenvolvida por pesquisadores no Google para fazer pesquisas em Deep Learning. O nome original era *DistBelief*.
-
-* Uma biblioteca de computação numérica de propósito geral.
-  
-* Com a mesma sintaxe funciona em diversos hardwares:
-  - CPU (com Eigen)
-  - GPU (cum CUDA)
-  - TPU (Tensor Processing Unit)
-  
-]
-
-.pull-right[
-  ![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/TensorFlowLogo.svg/2000px-TensorFlowLogo.svg.png)
-]
-
----
-
 ## Keras + R
 
 * Pacote do R: [`keras`](https://github.com/rstudio/keras).
