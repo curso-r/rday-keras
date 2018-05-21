@@ -88,11 +88,11 @@ class: inverse, middle, center
 
 * Banco de dados de uma [competição do Kaggle](https://www.kaggle.com/c/quora-question-pairs).
 
-* ~400k pares de perguntas duplicadas ou não marcadas pelos moderadores do site.
+* ~400k pares de perguntas duplicadas (ou não) marcadas pelos moderadores do site.
 
 * **Objetivo:** Identificar os pares de perguntas que possuem o mesmo _significado_.
 
-* Antes da competição o problea era resolvido com Random Forests, depois passaram a usar [Deep Learning](https://engineering.quora.com/Semantic-Question-Matching-with-Deep-Learning).
+* Antes da competição o problema era resolvido com Random Forests, depois passaram a usar [Deep Learning](https://engineering.quora.com/Semantic-Question-Matching-with-Deep-Learning).
 
 ---
 
@@ -154,6 +154,23 @@ knitr::include_graphics("modelo-esquema.svg")
 ```
 
 * Siamese LSTM
+
+---
+
+#### Embedding
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+knitr::include_graphics("embedding.svg")
+```
+
+
+---
+
+## LSTM
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+knitr::include_graphics("lstm.svg")
+```
 
 ---
 
@@ -310,6 +327,8 @@ class: inverse, middle, center
 * [Galeria de exemplos do Keras](https://keras.rstudio.com/articles/examples/index.html).
 * [Livro: Deep Learning com R](https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X)
 * [Blog: Tensorflow for R](https://tensorflow.rstudio.com/blog.html)
+
+![](https://naweb.files.wordpress.com/2012/04/gato-lendo-livroa.gif)
 
 ---
 class: inverse, middle, center
