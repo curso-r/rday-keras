@@ -1,7 +1,7 @@
 ---
 title: "Keras: Deep Learning com R"
 subtitle: "rday-keras.curso-r.com"
-author: "Daniel Falbel (@Curso-R e @R6)"
+author: "Daniel Falbel (@Curso-R e @R6) <br> dfalbel@curso-r.com"
 date: "22/05/2018"
 output:
   xaringan::moon_reader:
