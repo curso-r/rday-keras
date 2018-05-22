@@ -313,6 +313,18 @@ model %>% fit(
 )
 ```
 
+```{r}
+# Train on 363861 samples, validate on 40429 samples
+# Epoch 1/10
+# 363861/363861 [==============================] - 89s 245us/step - loss: 0.5860 - acc: 0.7248 - val_loss: 0.5590 - val_acc: 0.7449
+# Epoch 2/10
+# 363861/363861 [==============================] - 88s 243us/step - loss: 0.5528 - acc: 0.7461 - val_loss: 0.5472 - val_acc: 0.7510
+# Epoch 3/10
+# 363861/363861 [==============================] - 88s 242us/step - loss: 0.5428 - acc: 0.7536 - val_loss: 0.5439 - val_acc: 0.7515
+```
+
+
+
 ---
 class: inverse, middle, center
 
